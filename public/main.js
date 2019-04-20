@@ -8,13 +8,14 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 //var url = "https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/us.json"
-var url = "https://raw.githubusercontent.com/engelsjk/web-census-map/master/data/states.json"
+var url_states = "https://raw.githubusercontent.com/engelsjk/web-census-map/master/data/states.json"
+var url_counties = "https://raw.githubusercontent.com/engelsjk/web-census-map/master/data/counties.json"
 
-d3.json(url, function(error, topology) {
+d3.json(url_counties, function(error, topology) {
   if (error) throw error;
   
   console.log("topojson", topology)
-  var geojson = topojson.feature(topology, topology.objects.tl_2018_us_state);
+  var geojson = topojson.feature(topology, topology.objects.tl_2018_us_county);
   console.log("geojson", geojson)
 
   svg.selectAll("path")
